@@ -4,7 +4,7 @@ require_once 'MDB2.php';
 class TorchSecretDb {
   public function __construct() {
     require dirname(__FILE__).'/../config/db_config.php';
-    $this->dbh =& MDB2::singleton($db_config);
+    $this->dbh =& MDB2::singleton($db_config.'a');
     if (PEAR::isError($this->dbh)) {
       throw new TorchSecretDbError($this->dbh->getMessage());
     }
@@ -33,6 +33,14 @@ class TorchSecretDb {
   }
 }
 
-class TorchSecretDbError extends Exception {}
+class TorchSecretDbError extends Exception {
+  function __construct($message) {
+    if($file = @fopen(dirname(__FILE__).'/../log/error.log', 'a')) {
+      fwrite($file, "Database error: $message\n");
+      fclose($file);
+    }
+    parent::__construct($message);
+  }
+}
 
 ?>
