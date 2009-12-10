@@ -1,0 +1,7 @@
+# File must be replaced on deploy to production, since .htpasswd
+# path must be absolute.
+
+AuthType Basic
+AuthName "TorchSecret Staff Panel"
+AuthUserFile /home/matchu/Websites/torchsecret/config/.htpasswd
+Require valid-user
