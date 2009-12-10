@@ -4,7 +4,7 @@ require_once 'MDB2.php';
 class TorchSecretDb {
   public function __construct() {
     require dirname(__FILE__).'/../config/db_config.php';
-    $this->dbh =& MDB2::singleton($db_config.'a');
+    $this->dbh =& MDB2::singleton($db_config);
     if (PEAR::isError($this->dbh)) {
       throw new TorchSecretDbError($this->dbh->getMessage());
     }
