@@ -17,7 +17,8 @@ about the user (such as their IP address).
 
 If you find anything that could potentially make it possible for us to track
 down identities of users, please send us an e-mail - or, if you're a coder,
-write the patch yourself and send in a pull request!
+write the patch yourself and send in a pull request! We want to be absolutely
+certain that the form is as anonymous as possible.
 
 Thanks for your help!
 
