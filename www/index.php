@@ -46,7 +46,7 @@ $status_message = $status_messages[$_GET['status']];
   </form>
   <p>
     For the third year in a row,
-    <a href="http://www.pineviewtorch.com">PineViewTorch.com</a>
+    <a href="http://www.pineviewtorch.com" target="_blank">PineViewTorch.com</a>
     is running <strong>TorchSecret</strong>. Anonymously submit your deepest,
     darkest, preferably interesting secrets, and you may see it published in the
     January issue of <cite>The Torch</cite>!
@@ -56,14 +56,14 @@ $status_message = $status_messages[$_GET['status']];
     that as clear as possible, this year we've opted to publish the source code.
     Learn a little something about websites, and see if there's anything we
     missed, by
-    <a href="http://github.com/matchu/torchsecret">
+    <a href="http://github.com/matchu/torchsecret" target="_blank">
       inspecting the source code at GitHub</a
     >.
   </p>
   <footer>
     <p>
       Site design and content &copy; 2009
-      <a href="http://www.pineviewtorch.com/">
+      <a href="http://www.pineviewtorch.com/" target="_blank">
         <cite>The Torch</cite>
       </a>
     </p>
