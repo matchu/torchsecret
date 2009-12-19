@@ -52,9 +52,18 @@ cite {
   font-style: italic;
 }
 
-p, ol {
+body > p, body > ol, body > ul {
   margin: 1em auto;
   width: 40%;
+}
+
+li > ul {
+  margin: 2em 0;
+  width: 80%;
+}
+
+li > ul > li {
+  margin-bottom: 1em;
 }
 
 a {
