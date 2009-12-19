@@ -7,25 +7,52 @@ body {
   text-align: center;
 }
 
-form {
-  margin: 3em 0;
+h1, strong, .loud {
+  color: #fff;
 }
 
-textarea {
-  display: block;
+h2 {
+  color: #ddd;
+}
+
+h3 {
+  color: #bbb;
+}
+
+.loud {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+form {
+  margin: 2em 0;
+}
+
+textarea, input {
   font-family: inherit;
-  font-size: inherit;
-  height: 5em;
+  font-size: 120%;
+}
+
+textarea, input[type=text] {
+  display: block;
   margin: 0 auto 1em;
   text-align: center;
   width: 50%;
+}
+
+textarea {
+  height: 500%;
+}
+
+input[type=text] {
+  height: 120%;
 }
 
 cite {
   font-style: italic;
 }
 
-p {
+p, ol {
   margin: 1em auto;
   width: 40%;
 }

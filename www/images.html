@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TorchSecret - Image Search</title>
+    <link type="text/css" rel="stylesheet" href="/assets/index.css" />
+  </head>
+  <body>
+    <h1>TorchSecret Image Search</h1>
+    <h2>For use by staff members to find images for postcards</h2>
+    <h3>Searches Google Images for items "labeled for reuse"</h3>
+    <form action="http://images.google.com/images" method="GET">
+      <input type="hidden" name="as_rights"
+        value="(cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived)" />
+      <input id="search-query" type="text" name="as_q" />
+      <input type="submit" value="Image Search" />
+    </form>
+    <p>
+      <strong>Important!</strong> Make sure that, on finding an image, you find
+      two important details:
+    </p>
+    <ol>
+      <li>
+        <strong>The license itself</strong> - make sure it does, in fact,
+        allow you to use the image. (On Flickr, for example, find the link on
+        the right sidebar that says "some rights reserved".) We are a non-profit
+        publication, so you <em>may</em> use images under a non-commerical
+        license.
+      </li>
+      <li>
+        <strong>The creator of the image</strong> - if the license requires
+        attribution, which it likely will, this will have to be listed
+        somewhere in the paper.
+      </li>
+    </ol>
+    <p class="loud">
+      This information must be included on submitting your postcard!
+    </p>
+    <p>
+      If you just grab an image, lose the page, and then submit your secret,
+      you will be forced to start from scratch, as we can <strong>not</strong>
+      use any postcard that violates copyright, and attribution is a key part
+      of most re-use licenses.
+    </p>
+    <p class="loud">
+      Questions? <a href="mailto:webmaster@pineviewtorch.com">Ask them.</a>
+    </p>
+  </body>
+</html>
