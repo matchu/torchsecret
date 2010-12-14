@@ -26,6 +26,8 @@ endif;
   <div id="secrets">
 <?php
 while($secret = TorchSecretSecret::fetch($secrets_stmt)):
+  $color = substr($secret->attrs['cookie'], 0, 6);
+  $noncolor = substr($secret->attrs['cookie'], 6);
 ?>
     <div class="secret">
       <form action="delete_secret.php" method="POST">
@@ -33,6 +35,9 @@ while($secret = TorchSecretSecret::fetch($secrets_stmt)):
         <input type="submit" value="Delete" />
       </form>
       <div class="secret-body">
+        <span class="secret-submitter" style="background: #<?= $color ?>">
+          <?= $color ?><span><?= $noncolor ?></span>
+        </span>
         <?= htmlentities($secret->attrs['body']) ?>
       </div>
       <div class="secret-time">

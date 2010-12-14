@@ -62,7 +62,7 @@ class TorchSecretSecret {
   static function find_by_page($page) {
     $offset = ($page - 1) * self::PER_PAGE;
     $db = new TorchSecretDb();
-    return $db->query("SELECT id, body, created_at FROM secrets
+    return $db->query("SELECT id, body, cookie, created_at FROM secrets
       ORDER BY created_at DESC
       LIMIT $offset, ".self::PER_PAGE);
   }

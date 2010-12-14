@@ -22,8 +22,29 @@ body {
 }
 
 .secret-time {
+  clear: left;
   color: #aaa;
   font-size: .75em;
+  margin-top: .5em;
+}
+
+.secret-submitter {
+  color: white;
+  float: left;
+  font-size: 75%;
+  margin-right: .5em;
+  min-width: 4em;
+  padding: .25em;
+  text-align: center;
+  text-shadow: 1px 1px 1px #000;  
+}
+
+.secret-submitter span {
+  display: none;
+}
+
+.secret-submitter:hover span {
+  display: inline;
 }
 
 div.pagination {
