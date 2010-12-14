@@ -1,35 +1,45 @@
 <?php
-require_once 'MDB2.php';
-
 class TorchSecretDb {
+  private static $pdo;
+  
   public function __construct() {
-    require dirname(__FILE__).'/../config/db_config.php';
-    $this->dbh =& MDB2::singleton($db_config);
-    if (PEAR::isError($this->dbh)) {
-      throw new TorchSecretDbError($this->dbh->getMessage());
+    $this->pdo = self::getPDO();
+  }
+  
+  public function query($sql, $params=false) {
+    if($params) {
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute($params);
+    } else {
+      $stmt = $this->pdo->query($sql);
     }
+    return $stmt;
   }
   
-  public function query() {
-    $args = func_get_args();
-    return $this->generic_call('query', $args);
-  }
-  
-  public function exec() {
-    $args = func_get_args();
-    return $this->generic_call('exec', $args);
-  }
-  
-  public function quote($str) {
-    return $this->dbh->quote($str);
-  }
-  
-  private function generic_call($method, $args) {
-    $res = call_user_func_array(array($this->dbh, $method), $args);
-    if (PEAR::isError($res)) {
-      throw new TorchSecretDbError($res->getMessage());
+  public function exec($sql, $params=false) {
+    if($params) {
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute($params);
+    } else {
+      $stmt = $this->pdo->exec($sql);
     }
-    return $res;
+    return $stmt;
+  }
+  
+  private function getPDO() {
+    if(!self::$pdo) {
+      require dirname(__FILE__).'/../config/db_config.php';
+      $dsn = "${db_config['type']}:host=${db_config['host']};" .
+             "port=${db_config['port']};dbname=${db_config['database']}";
+      try {
+        self::$pdo = new PDO($dsn, $db_config['username'], $db_config['password']);
+      } catch(Exception $e) {
+        throw new TorchSecretDbError('Could not connect to database: '.$e->getMessage());
+      }
+      self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    $this->pdo = &self::$pdo;
+    return $this->pdo;
   }
 }
 

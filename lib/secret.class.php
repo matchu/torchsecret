@@ -19,10 +19,8 @@ class TorchSecretSecret {
     if(empty($body)) throw new TorchSecretRecordInvalid();
     $db = new TorchSecretDb();
     $db->exec(
-      'INSERT INTO secrets (body, cookie) VALUES ('
-      .$db->quote($body).', '
-      .$db->quote(self::user_cookie())
-      .')'
+      'INSERT INTO secrets (body, cookie) VALUES (?, ?)',
+      array($body, self::user_cookie())
     );
   }
   
@@ -49,7 +47,16 @@ class TorchSecretSecret {
   static function delete_by_id($id) {
     $id = (int) $id;
     $db = new TorchSecretDb();
-    $db->exec("DELETE FROM secrets WHERE id = $id LIMIT 1");
+    $db->exec("DELETE FROM secrets WHERE id = ? LIMIT 1", array($id));
+  }
+  
+  static function fetch($stmt) {
+    $row = $stmt->fetch();
+    if($row) {
+      return new self($row);
+    } else {
+      return false;
+    }
   }
   
   static function find_by_page($page) {
@@ -62,15 +69,16 @@ class TorchSecretSecret {
   
   static function recent_user_secret_count() {
     $db = new TorchSecretDb();
-    return $db->query('SELECT count(*) FROM secrets WHERE cookie='
-      .$db->quote(self::user_cookie())
-      .' AND created_at > SUBTIME(CURRENT_TIMESTAMP(), "00:15:00")'
-    )->fetchOne();
+    return $db->query(
+      'SELECT count(*) FROM secrets WHERE cookie = ?' .
+      ' AND created_at > SUBTIME(CURRENT_TIMESTAMP(), "00:15:00")',
+      array(self::user_cookie())
+    )->fetchColumn();
   }
   
   static function total_items() {
     $db = new TorchSecretDb();
-    return $db->query('SELECT count(*) FROM secrets')->fetchOne();
+    return $db->query('SELECT count(*) FROM secrets')->fetchColumn();
   }
   
   static function user_cookie() {

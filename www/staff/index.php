@@ -25,8 +25,7 @@ endif;
   <?php $pagination->show(); ?>
   <div id="secrets">
 <?php
-while($secret_row = $secrets_stmt->fetchRow(MDB2_FETCHMODE_ASSOC)):
-  $secret = new TorchSecretSecret($secret_row);
+while($secret = TorchSecretSecret::fetch($secrets_stmt)):
 ?>
     <div class="secret">
       <form action="delete_secret.php" method="POST">
