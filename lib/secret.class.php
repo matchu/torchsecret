@@ -41,7 +41,7 @@ class TorchSecretSecret {
     $diff = round($diff/7);
     if ($diff<4)
       return $diff . " week" . plural($diff) . " ago";
-    return "on " . date("F j, Y", strtotime($date));
+    return "on " . date("F j, Y", $date);
   }
   
   static function delete_by_id($id) {
