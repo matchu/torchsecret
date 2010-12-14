@@ -59,6 +59,18 @@ class TorchSecretSecret {
     }
   }
   
+  static function find_by_submitter_and_page($submitter, $page) {
+    $offset = ($page - 1) * self::PER_PAGE;
+    $db = new TorchSecretDb();
+    return $db->query(
+      "SELECT id, body, cookie, created_at FROM secrets " .
+      "WHERE cookie = ?" .
+      "ORDER BY created_at DESC " .
+      "LIMIT $offset, ".self::PER_PAGE,
+      array($submitter)
+    );
+  }
+  
   static function find_by_page($page) {
     $offset = ($page - 1) * self::PER_PAGE;
     $db = new TorchSecretDb();
@@ -79,6 +91,14 @@ class TorchSecretSecret {
   static function total_items() {
     $db = new TorchSecretDb();
     return $db->query('SELECT count(*) FROM secrets')->fetchColumn();
+  }
+  
+  static function total_by_submitter($submitter) {
+    $db = new TorchSecretDb();
+    return $db->query(
+      'SELECT count(*) FROM secrets WHERE cookie = ?',
+      array($submitter)
+    )->fetchColumn();
   }
   
   static function user_cookie() {

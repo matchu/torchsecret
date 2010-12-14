@@ -1,9 +1,17 @@
 <?php
 require_once '../../lib/secret.class.php';
 $page = (int) $_GET['page'] > 0 ? $_GET['page'] : 1;
-$secrets_stmt = TorchSecretSecret::find_by_page($page);
+$submitter = $_GET['submitter'];
 $pagination = new pagination();
-$pagination->items(TorchSecretSecret::total_items());
+if($submitter) {
+  $secrets_stmt = TorchSecretSecret::find_by_submitter_and_page($submitter, $page);
+  $total = TorchSecretSecret::total_by_submitter($submitter);
+  $pagination->target("?submitter=$submitter");
+} else {
+  $secrets_stmt = TorchSecretSecret::find_by_page($page);
+  $total = TorchSecretSecret::total_items();
+}
+$pagination->items($total);
 $pagination->limit(TorchSecretSecret::PER_PAGE);
 $pagination->currentPage($page);
 ?>
@@ -16,6 +24,12 @@ $pagination->currentPage($page);
 <body>
   <h1><a href="index.php">TorchSecret Staff Panel</a></h1>
 <?php
+if($submitter):
+?>
+  <h2>Secrets by submitter <?= $submitter ?></h2>
+<?php
+endif;
+
 if($_GET['status'] == 'deleted'):
 ?>
   <p>Secret successfully deleted.</p>
@@ -26,8 +40,9 @@ endif;
   <div id="secrets">
 <?php
 while($secret = TorchSecretSecret::fetch($secrets_stmt)):
-  $color = substr($secret->attrs['cookie'], 0, 6);
-  $noncolor = substr($secret->attrs['cookie'], 6);
+  $secret_cookie = $secret->attrs['cookie'];
+  $color = substr($secret_cookie, 0, 6);
+  $noncolor = substr($secret_cookie, 6);
 ?>
     <div class="secret">
       <form action="delete_secret.php" method="POST">
@@ -35,9 +50,9 @@ while($secret = TorchSecretSecret::fetch($secrets_stmt)):
         <input type="submit" value="Delete" />
       </form>
       <div class="secret-body">
-        <span class="secret-submitter" style="background: #<?= $color ?>">
+        <a href="?submitter=<?= $secret_cookie ?>" class="secret-submitter" style="background: #<?= $color ?>">
           <?= $color ?><span><?= $noncolor ?></span>
-        </span>
+        </a>
         <?= htmlentities($secret->attrs['body']) ?>
       </div>
       <div class="secret-time">
