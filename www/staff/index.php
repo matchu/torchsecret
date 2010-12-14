@@ -55,7 +55,7 @@ while($secret = TorchSecretSecret::fetch($secrets_stmt)):
         </a>
         <?= htmlentities($secret->attrs['body']) ?>
       </div>
-      <div class="secret-time">
+      <div class="secret-time" title="<?= $secret->attrs['created_at'] ?>">
         <?= $secret->created_at_in_words() ?>
       </div>
     </div>
