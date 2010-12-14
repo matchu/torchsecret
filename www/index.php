@@ -27,29 +27,32 @@ $status_message = $status_messages[$_GET['status']];
 <html>
 <head>
   <title>TorchSecret - what's your story?</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <link type="text/css" rel="stylesheet" href="/assets/index.css" />
 </head>
 <body>
   <h1>TorchSecret - what's your story?</h1>
   <form action="submit_secret.php" method="POST">
-    <?php
+<?php
     if($status_message):
-    ?>
+?>
     <p class="<?= $status_message['type'] ?>">
       <?= $status_message['message'] ?>
     </p>
-    <?php
+<?php
     endif;
-    ?>
+?>
     <textarea name="secret[body]"></textarea>
     <input type="submit" value="Submit" />
   </form>
   <p>
-    For the third year in a row,
+    For the fourth year in a row,
     <a href="http://www.pineviewtorch.com" target="_blank">PineViewTorch.com</a>
     is running <strong>TorchSecret</strong>. Anonymously submit your deepest,
     darkest, preferably interesting secrets, and you may see it published in the
-    January issue of <cite>The Torch</cite>!
+    February issue of <cite>The Torch</cite>!
   </p>
   <p>
     As always, this form is <strong>completely anonymous</strong>. But to make
@@ -62,7 +65,7 @@ $status_message = $status_messages[$_GET['status']];
   </p>
   <footer>
     <p>
-      Site design and content &copy; 2009
+      Site design and content &copy; 2010
       <a href="http://www.pineviewtorch.com/" target="_blank">
         <cite>The Torch</cite>
       </a>
@@ -70,7 +73,7 @@ $status_message = $status_messages[$_GET['status']];
     <p>
       All submissions are anonymous, and assumed to be fictitious.
       Any submission containing personally identifying information will be
-      considered a falsehood and immediately deleted.
+      considered to be false and be deleted immediately.
     </p>
   </footer>
 </body>
