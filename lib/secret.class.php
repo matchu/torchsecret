@@ -27,22 +27,23 @@ class TorchSecretSecret {
   }
   
   public function created_at_in_words() {
-	  $diff = time() - strtotime($this->attrs['created_at']);
-	  if ($diff<60)
-		  return $diff . " second" . plural($diff) . " ago";
-	  $diff = round($diff/60);
-	  if ($diff<60)
-		  return $diff . " minute" . plural($diff) . " ago";
-	  $diff = round($diff/60);
-	  if ($diff<24)
-		  return $diff . " hour" . plural($diff) . " ago";
-	  $diff = round($diff/24);
-	  if ($diff<7)
-		  return $diff . " day" . plural($diff) . " ago";
-	  $diff = round($diff/7);
-	  if ($diff<4)
-		  return $diff . " week" . plural($diff) . " ago";
-	  return "on " . date("F j, Y", strtotime($date));
+    $date = strtotime($this->attrs['created_at']);
+    $diff = time() - $date;
+    if ($diff<60)
+      return $diff . " second" . plural($diff) . " ago";
+    $diff = round($diff/60);
+    if ($diff<60)
+      return $diff . " minute" . plural($diff) . " ago";
+    $diff = round($diff/60);
+    if ($diff<24)
+      return $diff . " hour" . plural($diff) . " ago";
+    $diff = round($diff/24);
+    if ($diff<7)
+      return $diff . " day" . plural($diff) . " ago";
+    $diff = round($diff/7);
+    if ($diff<4)
+      return $diff . " week" . plural($diff) . " ago";
+    return "on " . date("F j, Y", strtotime($date));
   }
   
   static function delete_by_id($id) {
@@ -87,7 +88,7 @@ class TorchSecretRecordInvalid extends Exception {}
 class TorchSecretSpamException extends Exception {}
 
 function plural($num) {
-	if ($num != 1)
-		return "s";
+  if ($num != 1)
+    return "s";
 }
 ?>

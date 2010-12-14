@@ -2,7 +2,7 @@
 $status_messages = array(
   'saved' => array(
     'message' => 'Thanks for sending in your secret!
-      Look for it in the January issue of <cite>The Torch</cite>!',
+      Look for it in the February issue of <cite>The Torch</cite>!',
     'type' => 'notice'
   ),
   'spam' => array(
@@ -26,14 +26,14 @@ $status_message = $status_messages[$_GET['status']];
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TorchSecret - what's your story?</title>
+  <title>TorchSecret&mdash;what's your story?</title>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <link type="text/css" rel="stylesheet" href="/assets/index.css" />
 </head>
 <body>
-  <h1>TorchSecret - what's your story?</h1>
+  <h1>TorchSecret&mdash;what's your story?</h1>
   <form action="submit_secret.php" method="POST">
 <?php
     if($status_message):
