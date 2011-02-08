@@ -47,6 +47,10 @@ $status_message = $status_messages[$_GET['status']];
     <textarea name="secret[body]"></textarea>
     <input type="submit" value="Submit" />
   </form>
+  <p id="all-done">
+    We've already collected all our secrets for the year, but feel free to keep
+    sending them in! We might call on you again, Pine View&hellip;
+  </p>
   <p>
     For the fourth year in a row,
     <a href="http://www.pineviewtorch.com" target="_blank">PineViewTorch.com</a>

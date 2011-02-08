@@ -89,3 +89,14 @@ footer {
   font-size: 8pt;
   margin-top: 10em;
 }
+
+#all-done {
+  background: #333;
+  border: 1px solid #fff;
+  font-weight: bold;
+  margin-bottom: 3em;
+  padding: .5em;
+  -moz-border-radius: .5em; /* FF1+ */
+  -webkit-border-radius: .5em; /* Saf3-4 */
+  border-radius: .5em; /* Opera 10.5, IE9, Saf5, Chrome */
+}
