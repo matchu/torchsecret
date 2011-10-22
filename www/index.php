@@ -30,7 +30,7 @@ $status_message = $status_messages[$_GET['status']];
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link type="text/css" rel="stylesheet" href="/assets/index.css" />
+  <link type="text/css" rel="stylesheet" href="assets/index.css" />
 </head>
 <body>
   <h1>TorchSecret&mdash;what's your story?</h1>
@@ -47,16 +47,12 @@ $status_message = $status_messages[$_GET['status']];
     <textarea name="secret[body]"></textarea>
     <input type="submit" value="Submit" />
   </form>
-  <p id="all-done">
-    We've already collected all our secrets for the year, but feel free to keep
-    sending them in! We might call on you again, Pine View&hellip;
-  </p>
   <p>
-    For the fourth year in a row,
+    For the fifth year in a row,
     <a href="http://www.pineviewtorch.com" target="_blank">PineViewTorch.com</a>
     is running <strong>TorchSecret</strong>. Anonymously submit your deepest,
     darkest, preferably interesting secrets, and you may see it published in the
-    February issue of <cite>The Torch</cite>!
+    December issue of <cite>The Torch</cite>!
   </p>
   <p>
     As always, this form is <strong>completely anonymous</strong>. But to make
