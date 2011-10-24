@@ -2,7 +2,7 @@
 $status_messages = array(
   'saved' => array(
     'message' => 'Thanks for sending in your secret!
-      Look for it in the February issue of <cite>The Torch</cite>!',
+      Look for it in the December issue of <cite>The Torch</cite>!',
     'type' => 'notice'
   ),
   'spam' => array(
@@ -55,25 +55,25 @@ $status_message = $status_messages[$_GET['status']];
     December issue of <cite>The Torch</cite>!
   </p>
   <p>
-    As always, this form is <strong>completely anonymous</strong>. But to make
-    that as clear as possible, this year we've opted to publish the source code.
-    Learn a little something about websites, and see if there's anything we
-    missed, by
+    As always, this form is <strong>completely anonymous</strong>. If you want
+    to be sure, find a programmer buddy and have them
     <a href="http://github.com/matchu/torchsecret" target="_blank">
-      inspecting the source code at GitHub</a
-    >.
+      check out this website's source code</a
+    >. We're serious about privacy and want to make it as easy as possible
+    for you to feel comfortable in your anonymity.
   </p>
   <footer>
     <p>
-      Site design and content &copy; 2010
+      Site design and content &copy; 2011
       <a href="http://www.pineviewtorch.com/" target="_blank">
         <cite>The Torch</cite>
       </a>
     </p>
     <p>
-      All submissions are anonymous, and assumed to be fictitious.
-      Any submission containing personally identifying information will be
-      considered to be false and be deleted immediately.
+      All submissions are anonymous and assumed to be fictitious.
+      Do not submit personally identifying information. Any submission
+      containing such information is considered false and will be deleted
+      immediately.
     </p>
   </footer>
 </body>
